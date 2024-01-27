@@ -1,19 +1,24 @@
 import express from "express";
+import { getPharmacies } from "../pharmacies/listPharmacies";
 import {
-  getPharmacies,
   createHealthMartOrder,
   getHealthMartOrders,
   getHealthMartOrderById,
+} from "../pharmacies/healthMart";
+import {
   createCarePlusOrder,
   getCarePlusOrders,
   getCarePlusOrderById,
+} from "../pharmacies/carePlus";
+import {
   createQuickCareOrder,
   getQuickCareOrders,
   getQuickCareOrderById,
-} from "../controllers/pharmacyController";
+} from "../pharmacies/quickCare";
 
 const router = express.Router();
-// Pharmacy routes
+
+// All Pharmacies routes
 router.get("/pharmacy", getPharmacies);
 
 // HealthMart routes
