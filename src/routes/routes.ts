@@ -1,39 +1,15 @@
 import express from "express";
+import { pharmacies } from "../pharmacies/pharmacy";
 import { getPharmacies } from "../pharmacies/listPharmacies";
-import {
-  createHealthMartOrder,
-  getHealthMartOrders,
-  getHealthMartOrderById,
-} from "../pharmacies/healthMart";
-import {
-  createCarePlusOrder,
-  getCarePlusOrders,
-  getCarePlusOrderById,
-} from "../pharmacies/carePlus";
-import {
-  createQuickCareOrder,
-  getQuickCareOrders,
-  getQuickCareOrderById,
-} from "../pharmacies/quickCare";
 
 const router = express.Router();
 
-// All Pharmacies routes
 router.get("/pharmacy", getPharmacies);
 
-// HealthMart routes
-router.post("/healthmart/orders", createHealthMartOrder);
-router.get("/healthmart/orders", getHealthMartOrders);
-router.get("/healthmart/orders/:orderId", getHealthMartOrderById);
-
-// CarePlus routes
-router.post("/careplus/orders", createCarePlusOrder);
-router.get("/careplus/orders", getCarePlusOrders);
-router.get("/careplus/orders/:orderId", getCarePlusOrderById);
-
-// QuickCare routes
-router.post("/quickcare/orders", createQuickCareOrder);
-router.get("/quickcare/orders", getQuickCareOrders);
-router.get("/quickcare/orders/:orderId", getQuickCareOrderById);
+for (const [pharmacyName, pharmacy] of Object.entries(pharmacies)) {
+  router.post(`/${pharmacyName}/orders`, pharmacy.createOrder);
+  router.get(`/${pharmacyName}/orders`, pharmacy.getOrders);
+  router.get(`/${pharmacyName}/orders/:orderId`, pharmacy.getOrderById);
+}
 
 export default router;
