@@ -1,6 +1,6 @@
 import express from "express";
 import { pharmacies } from "../pharmacies/pharmacy";
-import { getPharmacies } from "../pharmacies/listPharmacies";
+import { getPharmacies } from "../pharmacies/pharmacy";
 
 const router = express.Router();
 
