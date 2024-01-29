@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { Pharmacy } from "./pharmacy";
 
-const healthMartOrders: any[] = [];
+export const healthMartOrders: any[] = [];
 
 export class HealthMart extends Pharmacy {
   static clearOrders() {

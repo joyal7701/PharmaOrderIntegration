@@ -1,13 +1,15 @@
 import { Request, Response } from "express";
 import { Pharmacy } from "./pharmacy";
 
-const carePlusOrders: any[] = [];
+export const carePlusOrders: any[] = [];
 
 export class CarePlus extends Pharmacy {
-  static clearOrders() {
-    carePlusOrders.length = 0;
-  }
-
+  /**
+   * Creates a new order in the CarePlus pharmacy.
+   * @param req - The request object containing the order data.
+   * @param res - The response object to send the result.
+   * @returns The response object with the created order or an error message.
+   */
   createOrder(req: Request, res: Response): Response<any, Record<string, any>> {
     try {
       const orderData = req.body;
@@ -31,6 +33,12 @@ export class CarePlus extends Pharmacy {
     }
   }
 
+  /**
+   * Retrieves all the orders in the CarePlus pharmacy.
+   * @param req - The request object.
+   * @param res - The response object to send the result.
+   * @returns The response object with the list of orders or an error message.
+   */
   getOrders(req: Request, res: Response): Response<any, Record<string, any>> {
     try {
       return res.status(200).json(carePlusOrders);
@@ -40,6 +48,12 @@ export class CarePlus extends Pharmacy {
     }
   }
 
+  /**
+   * Retrieves a specific order by its ID in the CarePlus pharmacy.
+   * @param req - The request object containing the order ID.
+   * @param res - The response object to send the result.
+   * @returns The response object with the order or an error message.
+   */
   getOrderById(
     req: Request,
     res: Response

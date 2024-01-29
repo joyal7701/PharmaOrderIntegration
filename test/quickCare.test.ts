@@ -1,11 +1,11 @@
 import request from "supertest";
 import app from "../src/app";
-import { QuickCare } from "../src/pharmacies/quickCare";
+import { quickCareOrders } from "../src/pharmacies/quickCare";
 
 describe("QuickCare API", () => {
   beforeEach(() => {
     // Clear the QuickCare orders array before each test
-    QuickCare.clearOrders();
+    quickCareOrders.length = 0;
   });
 
   describe("POST /quickCare/orders", () => {

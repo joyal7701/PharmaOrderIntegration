@@ -1,11 +1,11 @@
 import request from "supertest";
 import app from "../src/app";
-import { HealthMart } from "../src/pharmacies/healthMart";
+import { healthMartOrders } from "../src/pharmacies/healthMart";
 
 describe("HealthMart API", () => {
   beforeEach(() => {
     // Clear the HealthMart orders array before each test
-    HealthMart.clearOrders();
+    healthMartOrders.length = 0;
   });
 
   describe("POST /healthMart/orders", () => {

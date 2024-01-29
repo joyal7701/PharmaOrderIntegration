@@ -1,11 +1,11 @@
 import request from "supertest";
 import app from "../src/app";
-import { CarePlus } from "../src/pharmacies/carePlus";
+import { carePlusOrders } from "../src/pharmacies/carePlus";
 
 describe("CarePlus API", () => {
   beforeEach(() => {
     // Clear the CarePlus orders array before each test
-    CarePlus.clearOrders();
+    carePlusOrders.length = 0;
   });
 
   describe("POST /carePlus/orders", () => {
