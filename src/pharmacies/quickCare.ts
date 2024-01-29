@@ -4,6 +4,10 @@ import { Pharmacy } from "./pharmacy";
 const quickCareOrders: any[] = [];
 
 export class QuickCare extends Pharmacy {
+  static clearOrders() {
+    quickCareOrders.length = 0;
+  }
+
   createOrder(req: Request, res: Response): Response<any, Record<string, any>> {
     try {
       const orderData = req.body;
